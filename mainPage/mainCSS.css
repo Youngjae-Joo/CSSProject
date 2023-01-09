@@ -1,0 +1,27 @@
+
+*{padding: 0; margin: 0; box-sizing: border-box; list-style: none;}
+
+body{font-size: 14px; line-height: 1.42857143; color: black;}
+
+img{max-width: 100%; height: auto;}
+
+section{
+    margin: 0 auto;
+}
+
+.box{
+    border: 1px solid white;
+    background-color: rgb(255, 238, 1);
+    border-radius: 20px;
+    padding: 40px 0 0 25px;
+}
+
+.box .main strong{
+    display: block;
+    font-size: 25px;
+}
+
+.button .btn-create{
+    background-color: black;
+    font-weight: 600;
+}
