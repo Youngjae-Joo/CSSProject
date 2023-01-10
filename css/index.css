@@ -46,24 +46,27 @@ img {
     top: 0;
     left: 20vh;
 }
-.lo 
+.lo a{
+    font-size: 30px;
+    line-height: 30px;
+}
 
 .lo img {
     display: inline-block;
     position: relative;
     top: 0;
     left: auto;
+    width: 100px;
 }
 .lo :hover{
     transform: scale(1.5);
 }
 
-.lo .log:hover {
+.lo:hover  .log{
     transform : rotate(1080deg);
     height: 100px;
-    width: 100px;
+    width: 130px;
     transition: 1.0s;
-
 }
 
 .mynav {
