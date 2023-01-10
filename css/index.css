@@ -47,6 +47,7 @@ img {
     top: 0;
     left: 20vh;
 }
+.lo 
 
 .lo img {
     display: inline-block;
@@ -55,7 +56,7 @@ img {
     left: auto;
 }
 .lo :hover{
-    transform: scale(2);
+    transform: scale(1.5);
 }
 
 .lo .log:hover {
@@ -75,6 +76,11 @@ img {
 
 .navbar-collapse {
     align-content: stretch;
+    height: 75px;
+    line-height: 75px;
+}
+.navbar{
+    min-height: 85px;
 }
 
 .mynav .navbar-nav .active>a {
@@ -95,4 +101,16 @@ img {
 .navbar-inverse .navbar-nav>li>a:focus,
 .navbar-inverse .navbar-nav>li>a:hover {
     background-color: #000;
+}
+
+.container .titl{
+    border: 1px solid #777; 
+}
+
+.container .sub{
+    border: 1px solid #777; 
+    text-align: center;
+}
+.container .def{
+    border: 1px solid #777; 
 }
