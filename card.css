@@ -1,0 +1,77 @@
+  * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      box-sizing: border-box;
+  }
+
+  body {
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: black;
+      text-align: center;
+  }
+
+  img {
+      max-width: 100%;
+      height: auto;
+  }
+
+  /*----------------------------------------------------------------  */
+
+  .mainBox {
+      border: 1px solid #777;
+  }
+
+  .contentBox {
+      width: 450px;
+      display: inline-block;
+  }
+
+  #startBtn {
+      border-radius: 10;
+      border-color: aqua;
+      color: white;
+      background-color: #0095dd;
+      width: 80px;
+      padding: 5px;
+      font-weight: bold;
+      cursor: pointer;
+  }
+
+  #cardTable {
+      border-collapse: collapse;
+  }
+
+  #cardTable td {
+      border: 3px solid #0095dd;
+      width: 75px;
+      height: 121px;
+      text-align: center;
+      cursor: pointer;
+  }
+
+  #cardTable td img {
+      max-width: 70px;
+  }
+
+  #cardTable td span {
+      font-size: 25pt;
+      font-weight: bold;
+      color: #5AAFFF;
+      display: none;
+  }
+
+  #countDown {
+      background-color: #0095dd;
+      color: white;
+      font-size: 20pt;
+  }
+
+  #info {
+      width: 450px;
+      height: 250px;
+      background-color: #DDDDDD;
+      color: white;
+      padding-top: 100px;
+  }
