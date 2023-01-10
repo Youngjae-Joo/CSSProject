@@ -3,25 +3,67 @@
     margin: 0;
     box-sizing: border-box;
     list-style: none;
-    background-color: #222222;
+    /* background-color: #222222; */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Rowdies', cursive;
 }
-a{
-    text-decoration: none;
-    color: #828282;
-}
-.navbar{
+
+header {
     font-size: 24px;
     text-align: center;
-    
+    font-weight: 700;
 }
+
+body {
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #fff;
+    background-color: #222222;
+}
+
+canvas {
+    background: #eee;
+    display: block;
+    margin: 0 auto;
+}
+
+h3 {
+    color: #fff;
+    font-size: 30px;
+}
+
 img {
     max-width: 100%;
     height: auto;
 }
 
-.mylogo {
-    justify-content: center;
+.lo {
+    padding: 10px 15px;
+    float: none;
     display: inline-block;
+    font-weight: 900;
+    font-size: 28px;
+    position: absolute;
+    top: 0;
+    left: 20vh;
+}
+
+.lo img {
+    display: inline-block;
+    position: relative;
+    top: 0;
+    left: auto;
+}
+.lo :hover{
+    transform: scale(2);
+}
+
+.lo .log:hover {
+    transform : rotate(1080deg);
+    height: 100px;
+    width: 100px;
+    transition: 1.0s;
+
 }
 
 .mynav {
@@ -30,7 +72,8 @@ img {
     border-radius: 0;
     margin: 0;
 }
-.navbar-collapse{
+
+.navbar-collapse {
     align-content: stretch;
 }
 
@@ -38,9 +81,18 @@ img {
     background-color: #263248;
 }
 
-.navbar-inverse .navbar-nav{float: none; justify-content: center;display: inline-block;}
-.navbar-inverse .navbar-nav>li{float: none;  display: inline-block;}
+.navbar-inverse .navbar-nav {
+    float: none;
+    justify-content: center;
+    display: inline-block;
+}
+
+.navbar-inverse .navbar-nav>li {
+    float: none;
+    display: inline-block;
+}
+
 .navbar-inverse .navbar-nav>li>a:focus,
-.navbar-inverse .navbar-nav>li>a:hover{
+.navbar-inverse .navbar-nav>li>a:hover {
     background-color: #000;
 }

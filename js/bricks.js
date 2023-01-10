@@ -1,5 +1,7 @@
+
 //requestAnimationFrame을 사용한 랜더링 개선용(고정된 프레임)
-var interval = setInterval(draw, 10);
+var interval;
+
 //캔버스
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
@@ -10,14 +12,14 @@ var y = canvas.height - 30;
 
 //이동속도
 var dx = 2;
-var dy = 2;
+var dy = -2;
 
 //공크기
 var ballRadius = 10;
 
 //패들
-var paddleHeight = 10;
-var paddleWidth = 75;
+var paddleHeight = 15;
+var paddleWidth = 80;
 var paddleX = (canvas.width - paddleWidth) / 2;
 
 //버튼눌렀을때의 변수
@@ -44,7 +46,7 @@ var bricks = [];
 for (var c = 0; c < brickColumnCount; c++) {
     bricks[c] = [];
     for (var r = 0; r < brickRowCount; r++) {
-        bricks[c][r] = { x: 0, y: 0, status: 1 };
+        bricks[c][r] = { x: 0, y: 0, status: 2 };
     }
 }
 
@@ -77,12 +79,12 @@ function collisionDetection() {
     for (var c = 0; c < brickColumnCount; c++) {
         for (var r = 0; r < brickRowCount; r++) {
             var b = bricks[c][r];
-            if (b.status == 1) {
+            if (b.status >= 1) {
                 if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
                     dy = -dy;
-                    b.status = 0;
+                    b.status--;
                     score++;
-                    if (score == brickRowCount * brickColumnCount) {
+                    if (score == brickRowCount * brickColumnCount * 2) {
                         alert("YOU WIN, CONGRATULATIONS!");
                         document.location.reload();
                     }
@@ -96,14 +98,16 @@ function collisionDetection() {
 function drawBricks() {
     for (var c = 0; c < brickColumnCount; c++) {
         for (var r = 0; r < brickRowCount; r++) {
-            if (bricks[c][r].status == 1) {
+            if (bricks[c][r].status >= 1) {
                 var brickX = (c * (brickWidth + brickPadding)) + brickOffsetLeft;
                 var brickY = (r * (brickHeight + brickPadding)) + brickOffsetTop;
                 bricks[c][r].x = brickX;
                 bricks[c][r].y = brickY;
                 ctx.beginPath();
                 ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                ctx.fillStyle = "#0095DD";
+                if (bricks[c][r].status == 2) ctx.fillStyle = "#0095DD";
+                if (bricks[c][r].status == 1) ctx.fillStyle = "#828282";
+
                 ctx.fill();
                 ctx.closePath();
             }
@@ -140,7 +144,7 @@ function drawLives() {
     ctx.fillText("Lives : " + lives, canvas.width - 65, 20)
 }
 
- function draw() {
+function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBricks();
     drawBall();
@@ -159,8 +163,26 @@ function drawLives() {
     else if (y + dy > canvas.height - ballRadius) {
         if (x > paddleX && x < paddleX + paddleWidth) {
 
-            dy = -dy*(Math.random()+0.8);
-            x += dx*Math.round((Math.random()*2+1));
+            //속도 조절
+            dy = -dy * (Math.random() + 0.8);
+            if (dy <= -5) dy = -2;
+            //paddle
+            console.log(paddleX)
+            console.log(paddleX + paddleWidth)
+            console.log("")
+            if (x < (paddleX + paddleX + paddleWidth) / 2) {
+                console.log("left");
+                console.log((paddleX + paddleX + paddleWidth) / 2)
+                console.log(x);
+            } else if (x > (paddleX + paddleX + paddleWidth) / 2) {
+                console.log("right");
+                console.log((paddleX + paddleX + paddleWidth) / 2)
+                console.log(x);
+            }
+
+
+            x += dx * Math.round((Math.random() * 2 + 1));
+
         } else {
             lives--;
             if (!lives) {
@@ -188,5 +210,23 @@ function drawLives() {
     x += dx;
     y += dy;
 
+}
+var startBtn = document.querySelector(".startBtn");
+var stopBtn = document.querySelector(".stopBtn");
+var exitBtn = document.querySelector(".exitBtn")
+
+startBtn.onclick = function start() {
+
+    interval = setInterval(draw, 10);
+}
+stopBtn.onclick = function sto() {
+    clearInterval(interval)
+}
+exitBtn.onclick = function exit() {
+    draw();
+    canvas.width = canvas.width;
+    // clearInterval(interval)
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // ctx.beginPath();
 }
 
