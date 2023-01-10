@@ -79,7 +79,7 @@ section{
     border-radius: 20px;
     padding-left: 10px;
     background-color: beige;
-    display: none;
+    /* display: none; */
 }
 
 .content-toggle{
