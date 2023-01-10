@@ -140,7 +140,7 @@ function drawLives() {
     ctx.fillText("Lives : " + lives, canvas.width - 65, 20)
 }
 
-function draw() {
+ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBricks();
     drawBall();
@@ -190,5 +190,3 @@ function draw() {
 
 }
 
-
-draw();
