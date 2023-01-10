@@ -1,0 +1,8 @@
+locale                   : "en-US"
+title                    : "2dGame"
+title_separator          : "-"
+subtitle                 : portfolio
+name                     : "sschoi"
+description              : "An amazing website."
+url                      : "https://ssc1994.github.io/"
+baseurl                  : ""
