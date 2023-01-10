@@ -1,25 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>나의 메모장</title>
     <link rel="icon" href="img/img2.png">
 
-    <!-- 부트스트랩css -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <!-- 제이쿼리 -->
+    <!-- css링크 -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/index.css">
+    <link href="mainCSS.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
+
+
+    <!-- 제이쿼리 링크 -->
     <script src="/jquery/jquery-3.6.3.min.js"></script>
 
-    <link rel="stylesheet" href="mainCSS.css">
-    
-    <!-- 부트스트랩js -->
+    <!-- js링크 -->
     <script src="/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 </head>
+
 <body>
+
+    <header class="head">
+        <nav class="navbar navbar-inverse">
+            <div class="container con">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="lo">
+                        <a class="navbar-brand mylogo" href="/index.html">
+                            재원이의 미니게임
+                        </a>
+                        <img class="log" src="/img/logo.png" alt="" width="40" height="40">
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="mainHTML.html">단어장</a></li>
+                        <li><a href="#">숫자</a></li>
+                        <li><a href="#">사진</a></li>
+                        <li><a href="/bricks.html">벽돌</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <section>
 
@@ -33,26 +72,35 @@
 
                         <div class="main">
 
-                            <strong>Notes</strong>
-                            <small>어제의 내가 오늘의 나를 만들고, 오늘의 내가 내일의 나를 만든다</small>
+                            <div class="main-tag">
+                                <strong>Notes</strong>
+                                <small>어제의 내가 오늘의 나를 만들고, 오늘의 내가 내일의 나를 만든다</small>
+                            </div>
 
-                        </div>
+                            <div class="titleBox">
 
-                        <div class="titleBox">
+                                <input type="text" class="title" value="오늘의일기1" readonly>
+                                <input type="text" class="title" value="오늘의일기2" readonly>
+                                <input type="text" class="title" value="오늘의일기3" readonly>
 
-                        </div>
+                            </div>
 
-                        <div class="button">
+                            <div class="button">
 
-                            <button type="button" class="btn btn-primary btn-create">Write</button>
+                                <button type="button" class="btn btn-primary btn-create">Write</button>
+
+                            </div>
 
                         </div>
 
                     </div>
 
                     <div class="contentBox">
-                        
-                        
+
+                        <input type="text" class="content" value="일기내용1" readonly>
+                        <input type="text" class="content" value="일기내용2" readonly>
+                        <input type="text" class="content" value="일기내용3" readonly>
+
                     </div>
 
                 </div>
@@ -66,4 +114,5 @@
     <script src="mainJS.js"></script>
 
 </body>
+
 </html>
