@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        input{
+            width: 50px;
+            height: 50px;
+            font-size: large;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+<body>
+
+        <div id = "gamebody"></div>
+
+        <button id ="btn">제출하기</button>
+        <button id ="btn2">시작하기</button>
+
+    <script>
+        var gamebody = document.getElementById("gamebody");
+
+        var arr = new Array(9);
+        
+        for(var i = 0; i<9; i++){
+            for(var j = 0 ; j<9; j++){
+                arr[i] = new Array(9);
+            }
+        }
+
+        
+        
+        
+        for(var i = 0; i<9; i++){
+            var num = [1,2,3,4,5,6,7,8,9];
+            for(var j = 0; j<9; j++){
+                var a = Math.floor(Math.random()*9);
+                arr[i][j] = num[a];
+                num[a] = 0;
+            }
+        }
+
+        for(var i = 0; i<9; i++){
+            var num2 = [1,2,3,4,5,6,7,8,9];
+            for(var j = 0; j<9; j++){
+                if(num2.includes(arr[j][i])){
+                    num2[num2.indexOf(arr[j][i])]=0;
+                }else{
+                    arr[j][i] =0;
+                }
+            }
+        }
+
+        for(var i = 0; i<=6; i+=3){
+            var num3 = [1,2,3,4,5,6,7,8,9];
+            for(var j = 0; j<=6; j+=3){
+                if(num3.includes(arr[i][j])){
+                    num3[num3.indexOf(arr[i][j])]=0;
+                }else{
+                    arr[i][j] = 0;
+                }
+
+                if(num3.includes(arr[i][j+1])){
+                    num3[num3.indexOf(arr[i][j+1])]=0;
+                }else{
+                    arr[i][j+1] = 0;
+                }
+
+                if(num3.includes(arr[i][j+2])){
+                    num3[num3.indexOf(arr[i][j+2])]=0;
+                }else{
+                    arr[i][j+2] = 0;
+                }
+
+                if(num3.includes(arr[i+1][j])){
+                    num3[num3.indexOf(arr[i+1][j])]=0;
+                }else{
+                    arr[i+1][j] = 0;
+                }
+
+                if(num3.includes(arr[i+1][j+1])){
+                    num3[num3.indexOf(arr[i+1][j+1])]=0;
+                }else{
+                    arr[i+1][j+1] = 0;
+                }
+
+                if(num3.includes(arr[i+1][j+2])){
+                    num3[num3.indexOf(arr[i+1][j+2])]=0;
+                }else{
+                    arr[i+1][j+2] = 0;
+                }
+
+                if(num3.includes(arr[i+2][j])){
+                    num3[num3.indexOf(arr[i+2][j])]=0;
+                }else{
+                    arr[i+2][j] = 0;
+                }
+
+                if(num3.includes(arr[i+2][j+1])){
+                    num3[num3.indexOf(arr[i+2][j+1])]=0;
+                }else{
+                    arr[i+2][j+1] = 0;
+                }
+
+                if(num3.includes(arr[i+2][j+2])){
+                    num3[num3.indexOf(arr[i+2][j+2])]=0;
+                }else{
+                    arr[i+2][j+2] = 0;
+                }
+              
+            }
+        }
+        
+      
+        for(var i = 0; i<9; i++){
+
+            var div = document.createElement("div");
+
+            for(var j = 0; j<9; j++){
+
+                var num = arr[i][j];
+                var ans = document.createElement("input");
+                if(num!=0){
+                    ans.value = num;
+                }
+                div.appendChild(ans);
+            }
+
+           gamebody.appendChild(div);
+        }
+
+        
+
+    </script>
+
+    
+</body>
+</html>

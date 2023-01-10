@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+
+<style type="text/css">
+input[type='text']{
+margin-right: 3px; 
+width: 20px; 
+text-align: center;
+}
+.darkColored{
+	background-color: #e6ffe6;
+}
+.brightColored{
+	background-color: #ffe6ff;
+}
+.redFontcolor{
+	color: red;
+}
+#submitBtn{
+	display: none;
+}
+</style>
+
+</head>
+<body>
+
+<div id="board"></div>
+
+<br/>
+
+<button type="button" id="submitBtn" onclick="checkAnswer();">submit Answer</button>
+
+<br/>
+<br/>
+
+<label>level: </label> <input type="text" value="20" id="sudokuLevel" /> <button type="button" onclick="createAction();">create</button>
+
+<br/>
+<br/>
+
+<div id="answerBoard"></div>
+
+<script type="text/javascript">
+var sudokuArray;
+var possibleCaseArray;
+var possibleCaseStack;
+var backtracking = false;
+var cut = 20;
+var cutStack = [];
+var sudokuAnswer=null;
+var possibleAnswer=null;
+var success = false;
+
+window.onload=function(){	
+	defArrayEqualMethod();
+	
+	initialize();
+	
+}
+
+function initialize(){
+	drawBoard("su", "board");
+	backtracking = false;
+	possibleAnswer = null;
+	sudokuAnswer = null;
+	cutStack = [];
+	success = false;
+	document.getElementById("submitBtn").style.display = "none";
+	document.getElementById("answerBoard").innerHTML = "";
+	// make complete sudoku field
+	sudokuArray = makeSudokuArray();
+	possibleCaseArray = makePossibleCaseArray();
+	possibleCaseArray = shufflePossibleCaseArray(possibleCaseArray);
+	possibleCaseStack = new Array(81);
+	searchValidAnswer();
+	
+	// cut numbers to make sudoku puzzle
+	sudokuAnswer = copySudokuAnswer(sudokuArray);
+	while(true){
+		if(cutStack.length==cut) break;
+		cutNumbers("su");
+	}
+	possibleCaseArray = checkPossibleNumbers();	
+	possibleCaseStack.push(copy2DArray(possibleCaseArray));	
+	success = sudokuSolver();
+	if(success){
+		fillTextField("su");
+		document.getElementById("submitBtn").style.display = "block";
+	}
+	
+}
+
+function checkAnswer(){
+	for(var i=0; i<81; i++){
+		var str = "su" + i;
+		sudokuArray[i] = parseInt(document.getElementById(str).value);
+	}
+	console.log(sudokuAnswer);
+	console.log(sudokuArray);
+	if(sudokuArray.equals(sudokuAnswer))
+		alert("You win! Correct answer!");
+	else
+		alert("Wrong answer!");
+		
+	drawBoard("an", "answerBoard");
+	fillCorrectAnswer("an");
+	document.getElementById("submitBtn").style.display = "none";
+}
+
+function fillCorrectAnswer(name){
+	for(var i=0; i<81; i++){
+		var str = name + i;
+		document.getElementById(str).value = sudokuAnswer[i];
+	}
+}
+
+function createAction() {
+	sudokuLevel = parseInt(document.getElementById("sudokuLevel").value);
+	if (isNaN(sudokuLevel) || sudokuLevel<2 || sudokuLevel>60) { 
+		alert("Please enter a number between 2~60.");
+		return 0; 
+	}
+	cut = sudokuLevel;
+	initialize();
+}
+
+/*  
+ * make sudoku puzzle
+ */
+
+function sudokuSolver(){
+	var i=0, j=0;
+	while(true){
+		if(i==0 && possibleCaseArray[cutStack[i]].length==0){
+			if(possibleAnswer==null){
+				console.log("no answer");
+				alert("Failed to create new puzzle! Try again. - no answer");
+				return false;
+			}
+			console.log("no more cases");
+			console.log("unique answer - valid puzzle");
+			return true;
+		}
+		if(j==2){
+			console.log("double answer");
+			alert("Failed to create new puzzle! Try again. - double answer");
+			return false;
+		}
+		if(i==cutStack.length){
+			possibleAnswer = sudokuArray.slice();
+			undoSudokuPuzzle(cutStack[i-1]);
+			i--;
+			j++;
+		}
+		i=fillSudokuPuzzle(cutStack[i], i);
+	}
+}
+
+function undoSudokuPuzzle(i){
+	var presentNumber = sudokuArray[i];
+	sudokuArray[i] = 0;
+	possibleCaseStack.pop();
+	possibleCaseArray = copy2DArray(possibleCaseStack[possibleCaseStack.length-1]);
+	for(var cnt=0; cnt<possibleCaseArray[i].length; cnt++){
+		if(possibleCaseArray[i][cnt]==presentNumber)
+			possibleCaseArray[i].splice(cnt,1);
+	}
+	possibleCaseStack[possibleCaseStack.length-1] = copy2DArray(possibleCaseArray);
+}
+
+function fillSudokuPuzzle(i, j){
+	if(possibleCaseArray[i].length==0){
+		undoSudokuPuzzle(cutStack[j-1]);
+		return j-1;
+	}
+		
+	var presentNumber = possibleCaseArray[i].pop();
+	sudokuArray[i] = presentNumber;
+	possibleCaseArray = checkPossibleNumbers();	
+	possibleCaseStack.push(copy2DArray(possibleCaseArray));
+	return j+1;
+}
+
+function copySudokuAnswer(array){
+	var tempArray = new Array(81);
+	tempArray = array.slice();
+	return tempArray;
+}
+
+function checkPossibleNumbers(){
+	var tempArray = new Array(81);
+	for(var i=0; i<tempArray.length; i++){
+		tempArray[i] = [1,2,3,4,5,6,7,8,9];
+	}
+	
+	for(var i=0; i<cutStack.length; i++){
+		var key = cutStack[i];
+		var ii = Math.floor(key/9);
+		var jj = key%9;
+		
+		// row test
+		for(var mj=0; mj<9; mj++){
+			for(var cnt=0; cnt<tempArray[key].length; cnt++){
+				if(sudokuArray[ii*9+mj]==tempArray[key][cnt])
+					tempArray[key].splice(cnt,1);
+			}			
+		}
+		// column test
+		for(var mi=0; mi<9; mi++){
+			for(var cnt=0; cnt<tempArray[key].length; cnt++){
+				if(sudokuArray[mi*9+jj]==tempArray[key][cnt])
+					tempArray[key].splice(cnt,1);
+			}			
+		}
+		// 33box test
+		var box=0, mi=0, mj=0;
+		if(ii<3){
+			if(jj<3) box=1;
+			else if(jj<6) box=2;
+			else box=3;
+		} else if(ii<6){
+			if(jj<3) box=4;
+			else if(jj<6) box=5;
+			else box=6;
+		} else{
+			if(jj<3) box=7;
+			else if(jj<6) box=8;
+			else box=9;
+		}
+		
+		switch(box){
+		case 1:
+			mi=0, mj=0;
+			break;
+		case 2:
+			mi=0, mj=3;
+			break;
+		case 3:
+			mi=0, mj=6;
+			break;
+		case 4:
+			mi=3, mj=0;
+			break;
+		case 5:
+			mi=3, mj=3;
+			break;
+		case 6:
+			mi=3, mj=6;
+			break;
+		case 7:
+			mi=6, mj=0;
+			break;
+		case 8:
+			mi=6, mj=3;
+			break;
+		case 9:
+			mi=6, mj=6;
+			break;
+		}
+		
+		for(var mii=mi; mii<mi+3; mii++){
+			for(var mjj=mj; mjj<mj+3; mjj++){
+				for(var cnt=0; cnt<tempArray[key].length; cnt++){
+					if(sudokuArray[mii*9+mjj]==tempArray[key][cnt])
+						tempArray[key].splice(cnt,1);
+				}	
+			}
+		}		
+	}
+	
+	return tempArray;
+}
+
+function cutNumbers(name){
+	var key = Math.floor(Math.random()*81); // 0~80
+	for(var cnt=0; cnt<cutStack.length; cnt++){
+		if(key == cutStack[cnt])
+			return;
+	}
+	sudokuArray[key]=0;
+	var id = name + key;
+	document.getElementById(id).removeAttribute("readonly");
+	var str = document.getElementById(id).getAttribute("class");
+	str += " redFontcolor";
+	document.getElementById(id).setAttribute("class", str);
+	cutStack.push(key);
+}
+
+/* 
+* create complete sudoku field
+*/
+
+function searchValidAnswer(){
+	var i=0;
+	while(true){
+		if(i>80) break;
+		else if(backtracking){
+			undoSudokuArray(i);
+			backtracking = false;
+		}else{
+			i=fillSudokuArray(i);
+		}
+	}
+}
+
+function undoSudokuArray(i){
+	var presentNumber = sudokuArray[i];
+	sudokuArray[i] = 0;
+	possibleCaseStack[i] = null;
+	possibleCaseArray = copy2DArray(possibleCaseStack[i-1]);
+	for(var cnt=0; cnt<possibleCaseArray[i].length; cnt++){
+		if(possibleCaseArray[i][cnt]==presentNumber)
+			possibleCaseArray[i].splice(cnt,1);
+	}
+	possibleCaseStack[i-1] = copy2DArray(possibleCaseArray);
+	
+}
+
+function fillSudokuArray(i){
+	if(possibleCaseArray[i].length==0){
+		backtracking = true;
+		return i-1;
+	}
+	var presentNumber = possibleCaseArray[i].pop();
+	sudokuArray[i] = presentNumber;
+	remove(i,presentNumber);
+	possibleCaseStack[i] = copy2DArray(possibleCaseArray);
+	return i+1;
+}
+
+function copy2DArray(array2D){
+	var tempArray = new Array(array2D.length);
+	for(var i=0; i<tempArray.length; i++){
+		if(array2D[i]!=null)
+			tempArray[i] = array2D[i].slice();
+		else
+			tempArray[i] = null;
+	}
+	return tempArray;
+}
+
+function remove(ii,num){
+	var i = Math.floor(ii/9);
+	var j = ii%9;
+	colRemove(i,j,num);
+	rowRemove(i,j,num);
+	boxRemove(i,j,num);
+}
+
+function colRemove(i,j,num){
+	for(var cnt=0; cnt<9; cnt++){
+		removeNumber(cnt,j,num);
+	}
+}
+
+function rowRemove(i,j,num){
+	for(var cnt=0; cnt<9; cnt++){
+		removeNumber(i,cnt,num);
+	}
+}
+
+function boxRemove(i,j,num){
+	var box=0, mi=0, mj=0;
+	if(i<3){
+		if(j<3) box=1;
+		else if(j<6) box=2;
+		else box=3;
+	} else if(i<6){
+		if(j<3) box=4;
+		else if(j<6) box=5;
+		else box=6;
+	} else{
+		if(j<3) box=7;
+		else if(j<6) box=8;
+		else box=9;
+	}
+	
+	switch(box){
+	case 1:
+		mi=0, mj=0;
+		break;
+	case 2:
+		mi=0, mj=3;
+		break;
+	case 3:
+		mi=0, mj=6;
+		break;
+	case 4:
+		mi=3, mj=0;
+		break;
+	case 5:
+		mi=3, mj=3;
+		break;
+	case 6:
+		mi=3, mj=6;
+		break;
+	case 7:
+		mi=6, mj=0;
+		break;
+	case 8:
+		mi=6, mj=3;
+		break;
+	case 9:
+		mi=6, mj=6;
+		break;
+	}
+	
+	for(var mii=mi; mii<mi+3; mii++){
+		for(var mjj=mj; mjj<mj+3; mjj++){
+			removeNumber(mii,mjj,num);
+		}
+	}	
+}
+
+function removeNumber(ii,jj,num){
+	for(var cnt=0; cnt<possibleCaseArray[ii*9+jj].length; cnt++){
+		if(possibleCaseArray[ii*9+jj][cnt]==num){
+			possibleCaseArray[ii*9+jj].splice(cnt,1);
+		}
+	}
+}
+
+function shufflePossibleCaseArray(array){
+	var tempArray = new Array(array.length);
+	for(var i=0; i<array.length; i++){
+		tempArray[i] = shuffle(array[i].slice());
+	}
+	return tempArray;
+}
+
+function shuffle(array) {
+	
+	var currentIndex = array.length, temporaryValue, randomIndex;
+	
+	// While there remain elements to shuffle...
+	while (0 !== currentIndex) {
+	
+	  // Pick a remaining element...
+	  randomIndex = Math.floor(Math.random() * currentIndex);
+	  currentIndex -= 1;
+	  // And swap it with the current element.
+	  temporaryValue = array[currentIndex];
+	  array[currentIndex] = array[randomIndex];
+	  array[randomIndex] = temporaryValue;
+	}
+	return array;
+}
+
+function makePossibleCaseArray(){
+	var possibleCaseArray = new Array(81);
+	for(var i=0; i<possibleCaseArray.length; i++){
+		possibleCaseArray[i] = [1,2,3,4,5,6,7,8,9];
+	}
+	return possibleCaseArray;
+}
+
+function fillTextField(name){
+	for(var i=0; i<81; i++){
+		var str = name + i;
+		if(sudokuArray[i]!=0)
+			document.getElementById(str).value = sudokuArray[i];
+		else
+			document.getElementById(str).value = "";
+	}
+}
+
+function makeSudokuArray(){
+	var array = new Array(81);
+	
+	for(var i=0; i<array.length; i++){
+		array[i] = 0;
+	}
+	
+	return array;
+}
+
+function drawBoard(name, boardName){
+	var str = "";
+	
+	for(var i=0; i<9; i++){
+		for(var j=0; j<9; j++){
+			var box;
+			if(i<3){
+				if(j<3) box=1;
+				else if(j<6) box=2;
+				else box=3;
+			} else if(i<6){
+				if(j<3) box=4;
+				else if(j<6) box=5;
+				else box=6;
+			} else{
+				if(j<3) box=7;
+				else if(j<6) box=8;
+				else box=9;
+			}
+			
+			var num = i*9+j;
+			if(box==2 || box==4 || box==6 || box==8)
+				str += "<input type='text' maxlength='1' id='"+name+num+"' class='darkColored' readonly='readonly'/>";
+			else
+				str += "<input type='text' maxlength='1' id='"+name+num+"' class='brightColored' readonly='readonly'/>";
+		}
+		str += "<br/>";
+	}
+	
+	document.getElementById(boardName).innerHTML = str;
+}
+
+function defArrayEqualMethod(){
+	//Warn if overriding existing method
+	if(Array.prototype.equals)
+	    console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
+	// attach the .equals method to Array's prototype to call it on any array
+	Array.prototype.equals = function (array) {
+	    // if the other array is a falsy value, return
+	    if (!array)
+	        return false;
+
+	    // compare lengths - can save a lot of time 
+	    if (this.length != array.length)
+	        return false;
+
+	    for (var i = 0, l=this.length; i < l; i++) {
+	        // Check if we have nested arrays
+	        if (this[i] instanceof Array && array[i] instanceof Array) {
+	            // recurse into the nested arrays
+	            if (!this[i].equals(array[i]))
+	                return false;       
+	        }           
+	        else if (this[i] != array[i]) { 
+	            // Warning - two different object instances will never be equal: {x:20} != {x:20}
+	            return false;   
+	        }           
+	    }       
+	    return true;
+	}
+	// Hide method from for-in loops
+	Object.defineProperty(Array.prototype, "equals", {enumerable: false});
+}
+</script>
+
+</body>
+</html>
