@@ -89,6 +89,10 @@
       background-color: white;
     }
     
+    .explainBorder span{
+      color: black;
+    }
+    
     .expalinFirst {
       width: 33.3333%;
       height: 450px;
