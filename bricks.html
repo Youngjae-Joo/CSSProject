@@ -14,9 +14,11 @@
     <!-- js링크 -->
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/index01.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&family=Rowdies&display=swap" rel="stylesheet">
+
 
     <style>
-        
+
     </style>
 </head>
 
@@ -51,32 +53,20 @@
     </header>
 
 
-    <div class="container_fluid">
-        <!-- <div class="container"> -->
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-
-                    <canvas id="myCanvas" width="500%" height="350%" onclick="draw()"></canvas>
-
-                </div>
+    <div class="can">
+        <div class="inner">
+            <h1>Bricks Game</h1>
+            <canvas id="myCanvas" width="500%" height="350%"></canvas>
+            <div class="btnn">
+                <button type="button" class="startBtn btn btn-success">시작</button>
+                <button type="button" class="stopBtn btn btn-warning">중지</button>
+                <button type="button" class="exitBtn btn btn-danger">종료</button>
             </div>
         </div>
-
-
-
-
-
-
-    
-    <div>
-        <div>
-
-        </div>
     </div>
-   
+
 
     <script src="js/bricks.js"></script>
-    
 </body>
 
 </html>
