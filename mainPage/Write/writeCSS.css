@@ -1,0 +1,91 @@
+
+*{padding: 0; margin: 0; box-sizing: border-box; list-style: none;}
+
+body{font-size: 14px; line-height: 1.42857143; color: black;}
+
+img{max-width: 100%; height: auto;}
+
+section{
+    margin: 0 auto;
+}
+
+.box{
+    border: 1px solid white;
+    background-color: rgb(255, 238, 1);
+    border-radius: 20px;
+    padding: 40px 30px 20px 30px;
+}
+
+.box .titleBox .innerTitle{
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    padding-top: 13px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.innerTitle p{
+    float: left;
+    padding: 0 10px 0 10px;
+    font-size: 20px;
+    width: 10%;
+    text-align: center;
+    font-weight: 600;
+}
+.innerTitle .title-content{
+    width: 88%;
+    float: left;
+    padding-left: 10px;
+    font-size: 20px;
+    border: none;
+}
+
+.box .contentBox{
+    overflow: hidden;
+}
+
+.box .contentBox .innerContent{
+    margin-top: 20px;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    padding-top: 13px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.innerContent p{
+    float: left;
+    padding: 0 10px 0 10px;
+    font-size: 20px;
+    width: 10%;
+    text-align: center;
+    font-weight: 600;
+}
+
+.innerContent .content{
+    margin-bottom: 13px;
+    width: 88%;
+    float: left;
+    padding-left: 10px;
+    font-size: 15px;
+    border: none;
+}
+
+.btn-create{
+    float: right;
+    background-color: black;
+    font-weight: 600;
+    margin: 20px 0 0 0px;
+}
+
+.btn-back{
+    float: right;
+    background-color: rgb(116, 100, 100);
+    font-weight: 600;
+    margin: 20px 0 0 0px;
+    margin-left: 10px;
+}
