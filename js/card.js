@@ -1,3 +1,10 @@
+
+AOS.init();
+
+
+
+
+////////////////// 카드게임//////////////////
 //게임 상태
 var gameState = ''
 
@@ -133,9 +140,9 @@ function back() {
         $('#' + openCardId2).removeClass('opened');
         openCardId = '';
         openCardId2 = '';
-        
+
     } catch (error) {
-     return;   
+        return;
     }
 }
 
@@ -193,3 +200,21 @@ function scoreMinus() {
 
 
 /////////////////////////////////////////////////////////////////////////
+
+var slide = document.querySelector(".slide");
+
+var i = 1;
+
+setInterval(function () {
+    i++;
+    var bgImg=document.querySelector(".bgImg");
+    bgImg.remove();
+    var nextImg=document.createElement("img");
+    nextImg.src="cardImg/cardbanner"+i+".png";
+    nextImg.classList.add("bgImg");
+    slide.appendChild(nextImg);
+    if(i==4) i=0;
+}, 2000)
+
+
+

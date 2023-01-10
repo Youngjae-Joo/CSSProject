@@ -8,13 +8,17 @@
     <title>Document</title>
     <!-- css링크 -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="card.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index01.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="css/card.css" rel="stylesheet">
 
     <!-- 제이쿼리 링크 -->
     <script src="jquery/jquery-3.6.3.min.js"></script>
 
     <!-- js링크 -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 
 
 
@@ -22,12 +26,95 @@
 
 <body>
 
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand mylogo" href="index01.html">
+                        재원이의 미니게임
+                        <img src="img/logo.png" alt="" width="40" height="40">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">단어장</a></li>
+                        <li><a href="#">숫자</a></li>
+                        <li><a href="#">사진</a></li>
+                        <li><a href="bricks.html">벽돌</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
     <div class="container">
         <div class="row">
-            <div class="col-xs-12"><!-- 전체 틀 -->
+            <div class="col-xs-12"><!-- 처음이미지 -->
+                <div class="twoCard">
+                    <div class="cardShow"><img src="cardImg/joker.jpg" alt="1"></div>
+                    <div class="forShow">
+                        <div class="cardItem backCard"><img src="cardImg/cardback.jpg" alt="2"></div>
+                        <div class="cardItem frontCard"><img src="cardImg/joker.jpg" alt="3"></div>
+                    </div>
+                </div>
+                <h5 class="tip">"카드를 뒤집어보세요"</h5>
+            </div>
+
+
+            <div class="col-xs-12"><!-- 윗글 틀 -->
+                <!-- 설명박스 -->
+                <div class="explainContainer">
+                    <div data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500"
+                        class="explainBorder expalinFirst">
+                        <h4 class="toLeft borderDesign">Card Filp</h4>
+                        <span class="toLeft">같은 그림 찾기 게임. 카드를 뒤집어서 나오는 속성의 문양을 맞추면 됩니다. 2장씩 짝이 맞는 카드가 여러 장 필요하므로 주로 플레잉
+                            카드를 사용합니다. 물론 화투도 쓸 수 있으며, 서로 짝이 맞기만 한다면 꼭 카드가 아니라도 상관없습니다.</span>
+                    </div>
+
+                    <div data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="3000"
+                        class="explainBorder expalinSecond">
+                        <h4 class="toLeft borderDesign">Names...</h4>
+                        <span class="toLeft">한국에선 카드 뒤집기 게임 또는 같은 그림 맞추기라고 부릅니다. 일본에서 '신경쇠약(神経衰弱)'이라고 부르며, 영미권에선 집중을 뜻하는
+                            단어인 'Concentration', 특성에 따라 'memory'으로 부릅니다.</span>
+                    </div>
+
+                    <div data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000"
+                        class="explainBorder expalinThird">
+                        <h4 class="toLeft borderDesign">How To Play</h4>
+                        <span class="toLeft">카드를 잘 섞어서 바닥에 한 장씩 내려놓습니다. 한번에 두 장씩 뒤집어서 뒤집은 카드 두 장의 짝이 맞으면 점수가 올라가고, 짝이 맞지
+                            않았을 경우에는 점수가 내려가고 다시 뒤집습니다. 이렇게 반복하여 카드가 전부 뒤집히면 게임이 끝납니다. 최대한 뒤집는 횟수를 줄이는 것이 중요합니다.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12"><!-- 배너 -->
+                <div class="slide">
+                    <img src="cardImg/cardbanner1.png" class="bgImg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12"><!-- 카드게임 전체 틀 -->
 
                 <div class="contentBox">
-                    <h3>같은 그림 찾기</h3>
+                    <h3>카드 뒤집기</h3>
                     <div class="mainBox">
                         <table id="menuTable">
                             <tr>
@@ -53,7 +140,7 @@
 
 
 
-    <script src="card.js"></script>
+    <script src="js/card.js"></script>
 </body>
 
 </html>
