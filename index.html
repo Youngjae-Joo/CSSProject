@@ -13,11 +13,12 @@
     <script src="jquery/jquery-3.6.3.min.js"></script>
     <!-- js링크 -->
     <script src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/index01.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&family=Rowdies&display=swap"
+        rel="stylesheet">
 
-    <style>
-        
-    </style>
 </head>
 
 <body>
@@ -32,10 +33,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand mylogo" href="index.html">
-                        재원이의 미니게임
-                        <img src="img/logo.png" alt="" width="40" height="40">
-                    </a>
+                    <div class="lo">
+                        <a class="navbar-brand mylogo" href="index.html">
+                            재원이의 미니게임
+                        </a>
+                        <img class="log" src="img/logo.png" alt="" width="40" height="40">
+                    </div>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
@@ -54,21 +57,28 @@
     <section>
 
         <div class="container gamedef">
-
+            <div class="row">
+            </div>
             <div class="row titl">
-                <div class="col-xs-3 titl" >
+                <div class="col-xs-1">
+                    <img src="img/gameicon.png" style="width: 150px; display: inline;">
+                </div>
+                <div class="col-xs-3 titl">
                     <h3>게임</h3>
                 </div>
-                <div class="col-xs-9 titl">
+                <div class="col-xs-8 titl">
                     <h3>설명</h3>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-xs-3 sub" >
+                <div class="col-xs-1 sub">
+                    <h3>1</h3>
+                </div>
+                <div class="col-xs-3 sub">
                     <h3>Bricks Game</h3>
                 </div>
-                <div class="col-xs-9 def" >
+                <div class="col-xs-8 def">
                     <h3>벽돌게임은 ~~~~ ~~~~~</h3>
                 </div>
             </div>

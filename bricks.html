@@ -13,18 +13,16 @@
     <script src="jquery/jquery-3.6.3.min.js"></script>
     <!-- js링크 -->
     <script src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/index01.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&family=Rowdies&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&family=Rowdies&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/bricks.css">
 
-
-    <style>
-
-    </style>
 </head>
 
 <body>
-
-
     <header>
         <nav class="navbar navbar-inverse">
             <div class="container">
@@ -34,10 +32,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand mylogo" href="index.html">
-                        재원이의 미니게임
-                        <img src="img/logo.png" alt="" width="40" height="40">
-                    </a>
+                    <div class="lo">
+                        <a class="navbar-brand mylogo" href="index.html">
+                            재원이의 미니게임
+                        </a>
+                        <img class="log" src="img/logo.png" alt="" width="40" height="40">
+                    </div>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
@@ -45,7 +45,7 @@
                         <li><a href="#">단어장</a></li>
                         <li><a href="#">숫자</a></li>
                         <li><a href="#">사진</a></li>
-                        <li><a href="#">벽돌</a></li>
+                        <li><a href="bricks.html">벽돌</a></li>
                     </ul>
                 </div>
             </div>
@@ -53,7 +53,7 @@
     </header>
 
 
-    <div class="can">
+    <div class="can" style="background-image: url('img/bricks.jpg');">
         <div class="inner">
             <h1>Bricks Game</h1>
             <canvas id="myCanvas" width="500%" height="350%"></canvas>
@@ -63,6 +63,7 @@
                 <button type="button" class="exitBtn btn btn-danger">종료</button>
             </div>
         </div>
+
     </div>
 
 

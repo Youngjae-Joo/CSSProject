@@ -1,3 +1,4 @@
+
 //requestAnimationFrame을 사용한 랜더링 개선용(고정된 프레임)
 var interval;
 
@@ -104,9 +105,9 @@ function drawBricks() {
                 bricks[c][r].y = brickY;
                 ctx.beginPath();
                 ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                if(bricks[c][r].status==2)ctx.fillStyle = "#0095DD";
-                if(bricks[c][r].status==1)ctx.fillStyle = "#828282";
-                
+                if (bricks[c][r].status == 2) ctx.fillStyle = "#0095DD";
+                if (bricks[c][r].status == 1) ctx.fillStyle = "#828282";
+
                 ctx.fill();
                 ctx.closePath();
             }
@@ -164,18 +165,18 @@ function draw() {
 
             //속도 조절
             dy = -dy * (Math.random() + 0.8);
-            if( dy<=-5) dy=-2;
+            if (dy <= -5) dy = -2;
             //paddle
             console.log(paddleX)
             console.log(paddleX + paddleWidth)
             console.log("")
-            if(x<(paddleX + paddleX + paddleWidth)/2){
+            if (x < (paddleX + paddleX + paddleWidth) / 2) {
                 console.log("left");
-                console.log((paddleX + paddleX + paddleWidth)/2)
+                console.log((paddleX + paddleX + paddleWidth) / 2)
                 console.log(x);
-            }else if(x>(paddleX + paddleX + paddleWidth)/2){
+            } else if (x > (paddleX + paddleX + paddleWidth) / 2) {
                 console.log("right");
-                console.log((paddleX + paddleX + paddleWidth)/2)
+                console.log((paddleX + paddleX + paddleWidth) / 2)
                 console.log(x);
             }
 
@@ -212,13 +213,20 @@ function draw() {
 }
 var startBtn = document.querySelector(".startBtn");
 var stopBtn = document.querySelector(".stopBtn");
+var exitBtn = document.querySelector(".exitBtn")
+
 startBtn.onclick = function start() {
 
     interval = setInterval(draw, 10);
-    draw();
 }
 stopBtn.onclick = function sto() {
     clearInterval(interval)
 }
-
+exitBtn.onclick = function exit() {
+    draw();
+    canvas.width = canvas.width;
+    // clearInterval(interval)
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // ctx.beginPath();
+}
 

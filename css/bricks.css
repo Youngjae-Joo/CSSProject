@@ -1,0 +1,34 @@
+
+.can .inner {
+    justify-content: center;
+    text-align: center;
+}
+
+.can .inner .btnn {
+    width: 300px;
+    display: inline-block;
+    position: absolute;
+    left: vh;
+
+}
+
+.gamedef {
+    border: 1px solid #777; 
+    text-align: center;
+}
+
+
+.container .titl{
+    border: 1px solid #777; 
+}
+
+.container .sub{
+    border: 1px solid #777; 
+    text-align: center;
+}
+.container .def{
+    border: 1px solid #777; 
+}
+.navbar {
+    background-image: url('img/bricks.jpg');
+}
