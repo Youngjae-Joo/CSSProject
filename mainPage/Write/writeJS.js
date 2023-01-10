@@ -1,12 +1,14 @@
-let btn_create = document.querySelector(".btn-create");
-let btn_back = document.querySelector(".btn-back");
-let title = document.querySelector(".title-content");
-let content = document.querySelector(".content");
+var btn_create = document.querySelector(".btn-create");
+var btn_back = document.querySelector(".btn-back");
+var title = document.querySelector(".title-content");
+var content = document.querySelector(".content");
+var index = localStorage.length-1;
 
 btn_create.onclick = function(){
-
-    localStorage.setItem("title", (title.value));
-    localStorage.setItem("content", (content.value));
+    
+    index++;
+    localStorage.setItem("title"+index, (title.value));
+    localStorage.setItem("content"+index, (content.value));
 
     if(confirm('작성하시겠습니까?') === true){
         location.href="/mainPage/mainHTML.html";
