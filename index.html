@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&family=Rowdies&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="js/index.js">
 </head>
 
 <body>
@@ -42,10 +42,10 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#">단어장</a></li>
-                        <li><a href="#">숫자</a></li>
-                        <li><a href="#">사진</a></li>
-                        <li><a href="bricks.html">벽돌</a></li>
+                        <li><a href="mainPage/mainHTML.html">단어장</a></li>
+                        <li><a href="sudoku.html">스도쿠</a></li>
+                        <li><a href="card.html">카드뒤집기</a></li>
+                        <li><a href="bricks.html">벽돌깨기</a></li>
                     </ul>
                 </div>
             </div>
@@ -56,31 +56,10 @@
     <section>
 
         <div class="container gamedef">
-            <div class="row">
-            </div>
-            <div class="row titl">
-                <div class="col-xs-1">
-                    <img src="img/gameicon.png" style="width: 150px; display: inline;">
-                </div>
-                <div class="col-xs-3 titl">
-                    <h3>게임</h3>
-                </div>
-                <div class="col-xs-8 titl">
-                    <h3>설명</h3>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-1 sub">
-                    <h3>1</h3>
-                </div>
-                <div class="col-xs-3 sub">
-                    <h3>Bricks Game</h3>
-                </div>
-                <div class="col-xs-8 def">
-                    <h3>벽돌게임은 ~~~~ ~~~~~</h3>
-                </div>
-            </div>
+            <div class="gamedefInner"><a href="mainPage/mainHTML.html"><img src="mainPage/img/notepad.gif" alt="notepad"></a></div>
+            <div class="gamedefInner"><a href="sudoku.html"><img src="mainPage/img/sdocku.gif" alt="sdocku"></a></div>
+            <div class="gamedefInner"><a href="card.html"><img src="mainPage/img/card.gif" alt="card"></a></div>
+            <div class="gamedefInner"><a href="bricks.html"><img src="mainPage/img/block.gif" alt="block"></a></div>
         </div>
 
     </section>
