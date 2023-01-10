@@ -1,13 +1,13 @@
-var btn_create = document.querySelector(".btn-create");
-var titleBox = document.querySelector(".titleBox");
-var title = null;
+let btn_create = document.querySelector(".btn-create");
+let titleBox = document.querySelector(".titleBox");
+let title = null;
 
 btn_create.onclick = function () {
     location.href = "Write/write.html";
 }
 
 // console.log(localStorage);
-for (var i = 0; i < localStorage.length; i++) {
+for (let i = 0; i < localStorage.length; i++) {
     if (localStorage.key(i).includes('title')) {
         title = document.createElement("input");
         title.value = localStorage.getItem(localStorage.key(i));
@@ -18,10 +18,10 @@ for (var i = 0; i < localStorage.length; i++) {
     }
 }
 
-var contentBox = document.querySelector('.contentBox');
-for(var i = 0; i < localStorage.length; i++){
+let contentBox = document.querySelector('.contentBox');
+for(let i = 0; i < localStorage.length; i++){
     if(localStorage.key(i).includes('content')){
-        var content = document.createElement('input');
+        let content = document.createElement('input');
         content.value = localStorage.getItem(localStorage.key(i));
         contentBox.appendChild(content);
         content.classList.add("content");
