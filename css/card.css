@@ -149,7 +149,7 @@
   .contentBox {
     width: 450px;
     display: inline-block;
-    padding-bottom: 600px;
+    margin-bottom: 200px;
   }
 
   #startBtn {
@@ -224,7 +224,6 @@
   }
  
 
-
   .slide {
     margin: 500px 0 200px 0;
     background-color: #222222;
@@ -237,3 +236,161 @@
     width: 100%;
     height: 100%;
   }
+  /* ---------------랭크------------------ */
+
+  .rankBox{
+    width: 278px;
+    margin:0 auto;
+    margin-bottom: 100px;
+    margin-right: 100px;
+    float: right;
+  }
+
+  .rank ul{
+    margin: 0;
+  }
+
+  .rank{
+    border:1px solid #0095dd;
+    width: 278px;
+    margin:0 auto;
+  }
+
+  .rank img{
+    width: 40px;
+    height: 40px;
+  }
+
+  .ban{
+    margin:0 auto;
+    border:1px solid #0095dd;
+    width: 278px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .blist{
+    float:left;
+    box-sizing: border-box;
+    width: 33.3333%;
+    padding: 5px 0;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+  }
+
+  .bblue {
+    border-top: 1px solid aqua;
+    border-left: 1px solid aqua;
+  }
+
+  .on{
+    width: 278px;
+    border-top:1px solid #0095dd;
+    overflow: hidden;
+    height: 66px;
+  }
+
+  .rank_num{
+    width: 34px;
+    float: left;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 3px 0 0 8px;
+  }
+
+  .rank ul .on .rank_num{
+    margin-top: 20px;
+  }
+
+
+  .on .profile{
+    float: left;
+    position: relative;
+    padding:10px 0 0 60px;
+  }
+
+  .on .profile img{
+    display: inline;
+    position: absolute;
+    top: 8px;
+    left: 0;
+  }
+
+  .on .profile .rank_info .rank_name{
+    display: block;
+  }
+
+  .on .profile .rank_info .rank_cont{
+    display: block;
+    color: aquamarine;
+  }
+
+
+  .off{
+    width: 278px;
+    border-top:1px solid #0095dd;
+    overflow: hidden;
+    height: 33px;
+  }
+
+  .profile{
+    float: left;
+    margin: 3px 0 0 8px;
+  }
+
+  .off .profile img{
+    display: none;
+    position: absolute;
+    top: 8px;
+    left: 0;
+  }
+
+.off .profile .rank_info .rank_name{
+  display: inline;
+} 
+
+.off .profile .rank_info .rank_cont{
+  display: inline;
+  color: aquamarine;
+}
+
+.off:hover{
+  height: 66px;
+}
+
+.off:hover .rank_num{
+  margin-top: 20px;
+}
+
+.off:hover .profile{
+  margin: 0;
+  position: relative;
+  padding: 10px 0 0 60px;
+}
+
+.off:hover .profile img{
+  display: inline;
+}
+
+.off:hover .profile .rank_info .rank_name{
+  display: block;
+}
+
+.off:hover .profile .rank_info .rank_cont{
+  display: block;
+}
+
+
+
+/* ----------float---------- */
+
+.gemePlay{
+  overflow: hidden;
+}
+
+.game{
+  float: left;
+  margin-left: 200px;
+}
+
