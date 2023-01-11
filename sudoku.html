@@ -36,10 +36,11 @@
             width: 55px;
             height: 55px;
             font-size: large;
+            font-weight: 900;
             text-align: center;
             border-width: 1px;
             border-color: black;
-            
+
         }
 
 
@@ -62,12 +63,18 @@
             margin: 0 auto;
             padding: 40px;
             padding: 40px;
+            color: white;
         }
 
         .buttonall {
             height: 50px;
             padding-left: 160px;
             padding-bottom: 200px;
+        }
+
+        #btn4 {
+            border-radius: 5px;
+            padding: 5px;
         }
 
         .container2 {
@@ -116,8 +123,6 @@
             margin-right: 100px;
             border-radius: 15px;
         }
-
-        .ranktop {}
     </style>
 
 
@@ -144,10 +149,10 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#">단어장</a></li>
-                        <li><a href="#">숫자</a></li>
-                        <li><a href="#">사진</a></li>
-                        <li><a href="bricks.html">벽돌</a></li>
+                        <li><a href="word.html">단어장</a></li>
+                        <li><a href="sudoku.html">스도쿠</a></li>
+                        <li><a href="card.html">카드뒤집기</a></li>
+                        <li><a href="bricks.html">벽돌깨기</a></li>
                     </ul>
                 </div>
             </div>
@@ -186,7 +191,8 @@
             <div class="page4">4.3×3칸(box) 안에는 1~9가<br>
                 중복 없이 하나씩 들어갑니다.</div>
         </div>
-        <button type="button" class="btn-primary" style="float: right; margin-right: 20px; position: absolute; right: 0; bottom: 10px;"
+        <button type="button" class="btn-primary"
+            style="float: right; margin-right: 20px; position: absolute; right: 0; bottom: 10px;"
             id="btn4">다음으로</button>
     </div>
 
@@ -194,9 +200,14 @@
         <div class="rankboards">
             <div class="rank">
                 <div class="ranktop" style="color: white; padding: 0; font-size: 30px;">랭킹보드</div>
-                <div style="color: white; padding: 0; font-size: 20px;">1위 : 이재원 3:45</div>
-                <div style="color: white; padding: 0; font-size: 20px;">2위 : 이재원 4:25</div>
-                <div style="color: white; padding: 0; font-size: 20px;">3위 : 이재원 6:21</div>
+                <div style="color: white; padding: 0; font-size: 20px;">1위 : 재원 3:45</div>
+                <div style="color: white; padding: 0; font-size: 20px;">2위 : 재원 4:25</div>
+                <div style="color: white; padding: 0; font-size: 20px;">4위 : 재원 6:21</div>
+                <div style="color: white; padding: 0; font-size: 20px;">5위 : 재원 8:21</div>
+                <div style="color: white; padding: 0; font-size: 20px;">6위 : 재원 12:21</div>
+                <div style="color: white; padding: 0; font-size: 20px;">7위 : 재원 16:31</div>
+                <div style="color: white; padding: 0; font-size: 20px;">8위 : 재원 17:33</div>
+                <div style="color: white; padding: 0; font-size: 20px;">9위 : 재원 19:21</div>
 
             </div>
         </div>
@@ -213,96 +224,136 @@
 
         var mm = 0;
         var ss = 0;
+        var teston = 0;
 
-
-        var arr = new Array(9);
-
+        var arr2 = new Array(9);
         for (var i = 0; i < 9; i++) {
-            for (var j = 0; j < 9; j++) {
-                arr[i] = new Array(9);
-            }
+            arr2[i] = new Array(9);
         }
 
+        var arr1 = [[0, 0, 0, 0, 0, 0, 0, 0, 6],
+        [0, 3, 0, 0, 7, 1, 0, 4, 0],
+        [0, 0, 0, 0, 0, 0, 8, 0, 0],
+        [0, 0, 0, 9, 0, 8, 0, 7, 1],
+        [1, 0, 3, 0, 0, 0, 0, 0, 0],
+        [0, 0, 2, 0, 3, 0, 9, 0, 0],
+        [5, 0, 7, 0, 0, 6, 0, 0, 0],
+        [2, 0, 0, 0, 0, 0, 7, 0, 0],
+        [0, 0, 1, 8, 0, 0, 0, 0, 2]];
+
+        var arr2 = [[0, 0, 0, 0, 1, 7, 2, 0, 0],
+        [0, 0, 0, 4, 0, 0, 0, 0, 0],
+        [0, 0, 9, 0, 0, 3, 0, 0, 0],
+        [4, 0, 0, 7, 8, 0, 5, 0, 0],
+        [0, 2, 5, 0, 0, 0, 8, 0, 0],
+        [0, 0, 0, 6, 0, 0, 0, 0, 0],
+        [6, 0, 1, 5, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 6, 0, 3, 0],
+        [2, 0, 0, 0, 0, 1, 7, 0, 4]];
+
+        var arr3 = [[9, 0, 0, 5, 0, 1, 7, 0, 0],
+        [2, 0, 1, 0, 0, 9, 0, 0, 0],
+        [0, 0, 0, 8, 7, 0, 0, 9, 0],
+        [0, 8, 0, 0, 6, 4, 0, 7, 0],
+        [0, 0, 0, 0, 0, 0, 2, 1, 0],
+        [0, 0, 0, 0, 9, 0, 0, 0, 0],
+        [7, 0, 6, 2, 4, 0, 0, 0, 0],
+        [0, 4, 0, 0, 0, 0, 0, 0, 6],
+        [1, 0, 0, 0, 0, 0, 0, 4, 0]];
+
+        var arr4 = [[0, 0, 0, 0, 3, 0, 5, 7, 0],
+        [0, 0, 2, 0, 0, 8, 0, 0, 0],
+        [6, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 3, 0, 5, 7, 0, 0, 4, 0],
+        [0, 0, 0, 4, 0, 0, 0, 0, 2],
+        [0, 0, 5, 6, 0, 0, 7, 1, 8],
+        [0, 7, 8, 0, 0, 0, 0, 0, 0],
+        [0, 0, 6, 7, 0, 9, 0, 0, 1],
+        [0, 0, 0, 0, 0, 0, 0, 2, 0]];
+
+        var arr5 = [[8, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 3, 6, 0, 0, 0, 0, 0],
+        [0, 7, 0, 0, 9, 0, 2, 0, 0],
+        [0, 5, 0, 0, 0, 7, 0, 0, 0],
+        [0, 0, 0, 0, 4, 5, 7, 0, 0],
+        [0, 0, 0, 1, 0, 0, 0, 3, 0],
+        [0, 0, 1, 0, 0, 0, 0, 6, 8],
+        [0, 0, 8, 5, 0, 0, 0, 1, 0],
+        [0, 9, 0, 0, 0, 0, 4, 0, 0]];
+
+
+        var answer1 = [[7, 2, 4, 3, 8, 9, 1, 5, 6],
+        [6, 3, 8, 5, 7, 1, 2, 4, 9],
+        [9, 1, 5, 6, 4, 2, 8, 3, 7],
+        [4, 5, 6, 9, 2, 8, 3, 7, 1],
+        [1, 9, 3, 7, 6, 4, 5, 2, 8],
+        [8, 7, 2, 1, 3, 5, 9, 6, 4],
+        [5, 8, 7, 2, 9, 6, 4, 1, 3],
+        [2, 6, 9, 4, 1, 3, 7, 8, 5],
+        [3, 4, 1, 8, 5, 7, 6, 9, 2]];
+
+        var answer2 = [[5, 6, 3, 9, 1, 7, 2, 4, 8],
+        [1, 7, 2, 4, 6, 8, 3, 5, 9],
+        [8, 4, 9, 2, 5, 3, 6, 1, 7],
+        [4, 1, 6, 7, 8, 2, 5, 9, 3],
+        [3, 2, 5, 1, 4, 9, 8, 7, 6],
+        [9, 8, 7, 6, 3, 5, 4, 2, 1],
+        [6, 3, 1, 5, 7, 4, 9, 8, 2],
+        [7, 9, 4, 8, 2, 6, 1, 3, 5],
+        [2, 5, 8, 3, 9, 1, 7, 6, 4]];
+
+        var answer3 = [[9, 6, 8, 5, 2, 1, 7, 3, 4],
+        [2, 7, 1, 4, 3, 9, 6, 8, 5],
+        [4, 5, 3, 8, 7, 6, 1, 9, 2],
+        [3, 8, 2, 1, 6, 4, 5, 7, 9],
+        [6, 9, 4, 7, 8, 5, 2, 1, 3],
+        [5, 1, 7, 3, 9, 2, 4, 6, 8],
+        [7, 3, 6, 2, 4, 8, 9, 5, 1],
+        [8, 4, 5, 9, 1, 7, 3, 2, 6],
+        [1, 2, 9, 6, 5, 3, 8, 4, 7]];
+
+        var answer4 = [[1, 8, 4, 2, 3, 6, 5, 7, 9],
+        [7, 5, 2, 9, 4, 8, 1, 6, 3],
+        [6, 9, 3, 1, 5, 7, 2, 8, 4],
+        [8, 3, 1, 5, 7, 2, 9, 4, 6],
+        [9, 6, 7, 4, 8, 1, 3, 5, 2],
+        [4, 2, 5, 6, 9, 3, 7, 1, 8],
+        [2, 7, 8, 3, 1, 4, 6, 9, 5],
+        [5, 4, 6, 7, 2, 9, 8, 3, 1],
+        [3, 1, 9, 8, 6, 5, 4, 2, 7]];
+
+        var answer5 = [[8, 1, 2, 7, 5, 3, 6, 4, 9],
+        [9, 4, 3, 6, 8, 2, 1, 7, 5],
+        [6, 7, 5, 4, 9, 1, 2, 8, 3],
+        [1, 5, 4, 2, 3, 7, 8, 9, 6],
+        [3, 6, 9, 8, 4, 5, 7, 2, 1],
+        [2, 8, 7, 1, 6, 9, 5, 3, 4],
+        [5, 2, 1, 9, 7, 4, 3, 6, 8],
+        [4, 3, 8, 5, 2, 6, 9, 1, 7],
+        [7, 9, 6, 3, 1, 8, 4, 5, 2]];
+
+
+        var rannum = Math.floor(Math.random() * 5) + 1;
+        var answer = new Array(9);
         for (var i = 0; i < 9; i++) {
-            var num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-            for (var j = 0; j < 9; j++) {
-                var a = Math.floor(Math.random() * 9);
-                arr[i][j] = num[a];
-                num[a] = 0;
-            }
+            answer[i] = new Array(9);
         }
-
-        for (var i = 0; i < 9; i++) {
-            var num2 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-            for (var j = 0; j < 9; j++) {
-                if (num2.includes(arr[j][i])) {
-                    num2[num2.indexOf(arr[j][i])] = 0;
-                } else {
-                    arr[j][i] = 0;
-                }
-            }
+        if (rannum == 1) {
+            arr = arr1
+            answer = answer1
+        } else if (rannum == 2) {
+            arr = arr2
+            answer = answer2
+        } else if (rannum == 3) {
+            arr = arr3
+            answer =answer3
+        } else if (rannum == 4) {
+            arr = arr4
+            answer = answer4
+        } else {
+            arr = arr5;
+            answer = answer5
         }
-
-        for (var i = 0; i <= 6; i += 3) {
-            var num3 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-            for (var j = 0; j <= 6; j += 3) {
-                if (num3.includes(arr[i][j])) {
-                    num3[num3.indexOf(arr[i][j])] = 0;
-                } else {
-                    arr[i][j] = 0;
-                }
-
-                if (num3.includes(arr[i][j + 1])) {
-                    num3[num3.indexOf(arr[i][j + 1])] = 0;
-                } else {
-                    arr[i][j + 1] = 0;
-                }
-
-                if (num3.includes(arr[i][j + 2])) {
-                    num3[num3.indexOf(arr[i][j + 2])] = 0;
-                } else {
-                    arr[i][j + 2] = 0;
-                }
-
-                if (num3.includes(arr[i + 1][j])) {
-                    num3[num3.indexOf(arr[i + 1][j])] = 0;
-                } else {
-                    arr[i + 1][j] = 0;
-                }
-
-                if (num3.includes(arr[i + 1][j + 1])) {
-                    num3[num3.indexOf(arr[i + 1][j + 1])] = 0;
-                } else {
-                    arr[i + 1][j + 1] = 0;
-                }
-
-                if (num3.includes(arr[i + 1][j + 2])) {
-                    num3[num3.indexOf(arr[i + 1][j + 2])] = 0;
-                } else {
-                    arr[i + 1][j + 2] = 0;
-                }
-
-                if (num3.includes(arr[i + 2][j])) {
-                    num3[num3.indexOf(arr[i + 2][j])] = 0;
-                } else {
-                    arr[i + 2][j] = 0;
-                }
-
-                if (num3.includes(arr[i + 2][j + 1])) {
-                    num3[num3.indexOf(arr[i + 2][j + 1])] = 0;
-                } else {
-                    arr[i + 2][j + 1] = 0;
-                }
-
-                if (num3.includes(arr[i + 2][j + 2])) {
-                    num3[num3.indexOf(arr[i + 2][j + 2])] = 0;
-                } else {
-                    arr[i + 2][j + 2] = 0;
-                }
-
-            }
-        }
-
 
         for (var i = 0; i < 9; i++) {
 
@@ -349,33 +400,113 @@
             }
         }
 
+        var starton = 0;
         function aa() {
+            if(starton==0){
+            starton++;
+            gamebody.style.color = "black";
             a = window.setInterval(start, 1000);
         }
 
-        btn1.addEventListener("click", aa);
-        btn1.addEventListener("click", aa);
-
-        btn2.onclick = function () {
-
-
         }
 
-        var block = document.querySelectorAll(".block");
-        btn3.onclick = function () {
-            var count = 0;
+        btn1.addEventListener("click", aa);
 
-            for(var i = 0; i<9; i++){
-                for(var j = 0; j<9; j++){
-                    arr[i][j] = block[count].value;
+
+
+        var block = document.querySelectorAll(".block");
+        btn2.onclick = function () {
+            var count = 0;
+            var answerd = 0;
+            for (var i = 0; i < 9; i++) {
+                for (var j = 0; j < 9; j++) {
+                    arr2[i][j] = block[count].value;
                     count++;
                 }
+            }
+
+            if (rannum == 1) {
+                answer = answer1;
+            } else if (rannum == 2) {
+                answer = answer2;
+            } else if (rannum == 3) {
+                answer = answer3;
+            } else if (rannum == 4) {
+                answer = answer4;
+            } else {
+                answer = answer5;
+            }
+            console.log(answer);
+
+            for (var i = 0; i < 9; i++) {
+                for (var j = 0; j < 9; j++) {
+                    if (answer[i][j] != arr2[i][j]) {
+                        answerd++;
+                    }
+                }
+            }
+
+             if (answer == 0 && starton > 0 ||teston>0) {
+                var div = document.createElement("div");
+                var rank = document.querySelector(".rank");
+                var userinput = prompt("축하합니다.다맞추셨습니다.이름을 입력해주세요");
+                div.style.color = "white";
+                div.style.padding = "0";
+                div.style.fontSize = "20px";
+                div.innerHTML = "10위 : " + userinput + " 테스트";
+                rank.appendChild(div);
+                clearInterval(a);
+            }
+            else if (answerd != 0 && starton > 0 ) {
+                alert(answerd + '개 틀렸습니다 다시 도전하세요.')
+            }
+        }
+
+        btn3.onclick = function () {
+            teston++;
+            for(var i = 0; i<9; i++){
+                gamebody.firstElementChild.remove();
+            }
+            
+            for (var i = 0; i < 9; i++) {
+                
+                var div = document.createElement("div");
+
+                arr = answer;
+                
+                for (var j = 0; j < 9; j++) {
+                    var num = arr[i][j];
+                    var ans = document.createElement("input");
+                    ans.type = "number";
+                    ans.min = 1;
+                    ans.max = 9;
+                    if (j == 2 || j == 5 | j == 8) {
+                        ans.style.borderRightWidth = "4px";
+                    }
+                    if (j == 0) {
+                        ans.style.borderLeftWidth = "4px";
+                    }
+                    if (i == 0 || i == 3 || i == 6) {
+                        ans.style.borderTopWidth = "4px";
+                    }
+                    if (i == 8) {
+                        ans.style.borderBottomWidth = "4px";
+                    }
+                    ans.className = "block";
+                    if (num != 0) {
+                        ans.value = num;
+                    } else {
+                        ans.style.color = "blue";
+                    }
+                    div.appendChild(ans);
+                }
+
+                gamebody.appendChild(div);
             }
         }
 
         var count = 1;
         var page = document.querySelector(".howto");
-        console.log(page.firstElementChild.nextElementSibling);
         btn4.onclick = function () {
             if (count == 1) {
                 page.firstElementChild.style.display = "none";
