@@ -19,8 +19,12 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/bricks.css">
 
+
+    <link href="https://unpkg.com/webkul-micron@1.1.6/dist/css/micron.min.css" type="text/css" rel="stylesheet">
+    <script src="https://unpkg.com/webkul-micron@1.1.6/dist/script/micron.min.js" type="text/javascript"></script>
+
 </head>
- 
+
 <body background="img/bricks.jpg">
     <header>
         <nav class="navbar navbar-inverse">
@@ -41,36 +45,37 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#">단어장</a></li>
-                        <li><a href="#">숫자</a></li>
-                        <li><a href="#">사진</a></li>
-                        <li><a href="bricks.html">벽돌</a></li>
+                        <li><a href="word.html">단어장</a></li>
+                        <li><a href="sudoku.html">스도쿠</a></li>
+                        <li><a href="card.html">카드뒤집기</a></li>
+                        <li><a href="bricks.html">벽돌깨기</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <div class="can" >
+    <div class="can">
         <div class="inner">
-            <h1>Bricks Game</h1>
+            <h1 data-micron="swing">Bricks Game</h1>
             <canvas id="myCanvas" width="580%" height="450%"></canvas>
+
             <div class="btnn">
-                <button type="button" class="startBtn btn btn-success">시작</button>
-                <button type="button" class="stopBtn btn btn-warning">중지</button>
-                <button type="button" class="exitBtn btn btn-danger">종료</button>
+                <button type="button" class="startBtn btn btn-success" data-micron="squeeze">시작</button>
+                <button type="button" class="stopBtn btn btn-warning"  data-micron="swing">중지</button>
+                <button type="button" class="exitBtn btn btn-danger"   data-micron="pop">종료</button>
             </div>
-            <div class="levelSel">
-                <select class="level" disabled>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
+            
+            <div>
+                <div class="how" data-micron="bounce">
+                    조작방법 : 
+                </div>
+                <div class="howDef" data-micron="pop">
+                    키보드 ( ← → ) 좌우 방향키
+                </div>
             </div>
         </div>
     </div>
-
 
     <script src="js/bricks.js"></script>
 </body>

@@ -50,6 +50,7 @@ if (level = localStorage.getItem("level") == null) {
     level = localStorage.getItem("level");
 }
 
+
 //벽돌생성
 
 var bricks = [];
