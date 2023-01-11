@@ -85,10 +85,6 @@ img {
     min-height: 85px;
 }
 
-.mynav .navbar-nav .active>a {
-    background-color: #263248;
-}
-
 .navbar-inverse .navbar-nav {
     float: none;
     justify-content: center;
@@ -100,8 +96,10 @@ img {
     display: inline-block;
 }
 
-.navbar-inverse .navbar-nav>li>a:focus,
-.navbar-inverse .navbar-nav>li>a:hover {
+
+.navbar-inverse .navbar-nav>li:focus,
+.navbar-inverse .navbar-nav>li:hover {
+    padding: 12.5px 0 21px 0;
     background-color: #000;
 }
 
@@ -133,4 +131,17 @@ img {
     width: 500px;
     height: 500px;
 
+}
+
+.mainHide{
+    display: none;
+}
+
+.gamedef .gamedefInner:hover .mainShow{
+    display:none;
+}
+
+.gamedef .gamedefInner:hover .mainHide{
+    display:block;
+    transform: scale(1.2);
 }

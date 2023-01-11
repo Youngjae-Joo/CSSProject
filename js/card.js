@@ -47,7 +47,7 @@ function setTable() {
         var idx = generateRandom(0, 23 - i);
         var img = cards.splice(idx, 1);//idx번째 1개 삭제
 
-        cardTableCode += '<td id="card' + i + '"><img src="cardImg/' + img + '"><span>?</span></td>';
+        cardTableCode += '<td id="card' + i + '"><img class="animate__animated animate__flipInY" src="cardImg/' + img + '"><span>?</span></td>';
     }
     cardTableCode += '</tr>';
     $('#cardTable').html(cardTableCode);

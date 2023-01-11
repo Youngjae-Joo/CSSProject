@@ -14,12 +14,13 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
     <link href="css/card.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 
-    
+
 
     <!-- 제이쿼리 링크 -->
     <script src="jquery/jquery-3.6.3.min.js"></script>
@@ -54,7 +55,7 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="mainPage/mainHTML.html">단어장</a></li>
+                        <li><a href="word.html">단어장</a></li>
                         <li><a href="sudoku.html">스도쿠</a></li>
                         <li><a href="card.html">카드뒤집기</a></li>
                         <li><a href="bricks.html">벽돌깨기</a></li>
@@ -123,32 +124,149 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12"><!-- 카드게임 전체 틀 -->
+                <div class="gamePlay">
+                    <div class="game">
+                        <div class="contentBox">
+                            <h3>재원이의 카드 뒤집기</h3>
+                            <div class="mainBox">
+                                <table id="menuTable">
+                                    <tr>
+                                        <td class="alignLeft">
+                                            <button id="startBtn" style="margin:0 10px 0 0;">Start</button>
+                                        </td>
+                                        <td class="algintRight">
+                                            <span>score:<span id="score">0</span></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="boxUpper">
+                                <div id="countDown">Ready</div>
+                                <table id="cardTable"></table>
+                                <div id=info>시작하려면 Start 버튼을 눌러주세요</div>
+                            </div>
 
-                <div class="contentBox">
-                    <h3>재원이의 카드 뒤집기</h3>
-                    <div class="mainBox">
-                        <table id="menuTable">
-                            <tr>
-                                <td class="alignLeft">
-                                    <button id="startBtn" style="margin:0 10px 0 0;">Start</button>
-                                </td>
-                                <td class="algintRight">
-                                    <span>score:<span id="score">0</span></span>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="boxUpper">
-                        <div id="countDown">Ready</div>
-                        <table id="cardTable"></table>
-                        <div id=info>시작하려면 Start 버튼을 눌러주세요</div>
+                        </div>
                     </div>
 
+
+                    <div class="rankBox">
+                        <h3>TOP10 Ranker</h3><!-- 랭킹-->
+                        <div class="ban">
+                            <div class="blist bblue">TOP10</div>
+                            <div class="blist">Score</div>
+                            <div class="blist">Nickname</div>
+                        </div>
+                        <div class="rank">
+                            <ul>
+                                <li class="on">
+                                    <span class="rank_num">1</span>
+                                    <div class="profile">
+                                        <img src="cardImg/sscProfile.png" alt="profileImg">
+                                        <div class="rank_info">
+                                            <span class="rank_name">0304호</span>
+                                            <span class="rank_cont">눈감고도하지 1등쉽네</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="off">
+                                    <span class="rank_num">2</span>
+                                    <div class="profile">
+                                        <img src="cardImg/망나뇽Profile.png" alt="profileImg2">
+                                        <div class="rank_info">
+                                            <span class="rank_name">akdsksdyd</span>
+                                            <span class="rank_cont">하나만 더 맞췄으면...</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="off">
+                                    <span class="rank_num">3</span>
+                                    <div class="profile">
+                                        <img src="cardImg/피카츄Profile.png" alt="profileImg3">
+                                        <div class="rank_info">
+                                            <span class="rank_name">피카츄</span>
+                                            <span class="rank_cont">3등</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="off">
+                                    <span class="rank_num">4</span>
+                                    <div class="profile">
+                                        <img src="#" alt="profileImg4">
+                                        <div class="rank_info">
+                                            <span class="rank_name">따깅</span>
+                                            <span class="rank_cont">4emd</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="off">
+                                    <span class="rank_num">5</span>
+                                    <div class="profile">
+                                        <img src="#" alt="profileImg5">
+                                        <div class="rank_info">
+                                            <span class="rank_name">강의듣는중</span>
+                                            <span class="rank_cont">노잼</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="off">
+                                    <span class="rank_num">6</span>
+                                    <div class="profile">
+                                        <img src="#" alt="profileImg6">
+                                        <div class="rank_info">
+                                            <span class="rank_name">침착하기</span>
+                                            <span class="rank_cont">개재미없네</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="off">
+                                    <span class="rank_num">7</span>
+                                    <div class="profile">
+                                        <img src="#" alt="profileImg7">
+                                        <div class="rank_info">
+                                            <span class="rank_name">백설공주</span>
+                                            <span class="rank_cont">7등</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="off">
+                                    <span class="rank_num">8</span>
+                                    <div class="profile">
+                                        <img src="#" alt="profileImg8">
+                                        <div class="rank_info">
+                                            <span class="rank_name">백설마을꿀단지</span>
+                                            <span class="rank_cont">개어려운데?</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="off">
+                                    <span class="rank_num">9</span>
+                                    <div class="profile">
+                                        <img src="#" alt="profileImg9">
+                                        <div class="rank_info">
+                                            <span class="rank_name">탑은그냥오지마셈</span>
+                                            <span class="rank_cont">너무어려워요</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="off">
+                                    <span class="rank_num">10</span>
+                                    <div class="profile">
+                                        <img src="#" alt="profileImg10">
+                                        <div class="rank_info">
+                                            <span class="rank_name">킹도형</span>
+                                            <span class="rank_cont">누구세요근데</span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 
 
     <script src="js/card.js"></script>
