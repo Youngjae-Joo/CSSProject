@@ -199,7 +199,7 @@ function scoreMinus() {
 
 
 
-/////////////////////////////////////////////////////////////////////////
+//////////////////////////배너//////////////////////////////////////
 
 var slide = document.querySelector(".slide");
 
@@ -213,8 +213,8 @@ setInterval(function () {
     nextImg.src="cardImg/cardbanner"+i+".png";
     nextImg.classList.add("bgImg");
     slide.appendChild(nextImg);
-    if(i==4) i=0;
-}, 2000)
+    if(i==3) i=0;
+}, 5000)
 
 
 
