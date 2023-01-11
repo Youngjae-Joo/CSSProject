@@ -8,12 +8,22 @@
     width: 300px;
     display: inline-block;
     position: absolute;
-    left: vh;
 
 }
 
-.gamedef {
-    border: 1px solid #777; 
+.how {
+    font-size: 20px;
     text-align: center;
+    display: inline-block;
+    position: relative;
+    top: 50px;
+}
+.howDef{
+    margin-left: 20px;
+    font-size: 20px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    top: 50px;
 }
 
