@@ -6,19 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스도쿠</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/index.css">
     <!-- css링크 -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
-
+    
     <!--제이쿼리-->
     <script src="jquery/jquery-3.6.3.min.js"></script>
-    <!-- js링크 -->
     <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <!-- js링크 -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 
@@ -29,8 +28,9 @@
         }
 
         body {
-            background-color: black;
+            background-color: #222222;
         }
+
 
         input {
             width: 55px;
@@ -62,14 +62,13 @@
         .container1 #gamebody {
             margin: 0 auto;
             padding: 40px;
-            padding: 40px;
-            color: white;
         }
 
         .buttonall {
             height: 50px;
             padding-left: 160px;
             padding-bottom: 200px;
+            color: white;
         }
 
         #btn4 {
@@ -100,6 +99,7 @@
             margin-top: 10px;
             margin-left: 20px;
             border-radius: 15px;
+            color: black;
         }
 
         .page2 {
@@ -123,6 +123,8 @@
             margin-right: 100px;
             border-radius: 15px;
         }
+
+      
     </style>
 
 
@@ -161,12 +163,12 @@
 
 
     <div class="container1" style="margin-left: 100px;">
-        <h3 style="color: white; padding-left: 220px;">재원이의 스도쿠</h3>
+        <h3 style="color: white; padding-left: 220px;" >재원이의 스도쿠</h3>
         <div id="gamebody"></div>
 
         <div class="buttonall">
             <button type="button" class="btn btn-primary" id="btn1">시작하기</button>
-            <button type="button" class="btn btn-secondary" id="btn2">제출하기</button>
+            <button type="button" class="btn btn-secondary" id="btn2" style="color: black;">제출하기</button>
             <button type="button" class="btn btn-success" id="btn3">테스트용</button>
         </div>
 
