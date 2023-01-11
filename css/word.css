@@ -1,0 +1,99 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    /* background-color: #222222; */
+    font-family: 'Poor Story', cursive;
+}
+
+body{
+    /* background-color: white; */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+section .box{
+    color: black;
+    overflow: hidden;
+}
+
+.top{
+    text-align: center;
+}
+
+.top h1{
+    font-weight: 600;
+}
+
+.wordsBox{
+    float: left;
+    border: 3px solid black;
+    background-color: beige;
+    border-radius: 5px;
+    margin-top: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 800px;
+}
+
+.wordsBox h3{
+    margin: 0 auto;
+    display: inline-block;
+    color: black;
+    padding: 10px 300px 10px 3px;
+    border-bottom: 1px solid black;
+}
+
+.wo{
+    float: left;
+}
+
+.me{
+    float: left;
+}
+
+.woMe li{
+    padding-right: 300px;
+    border-bottom: 1px solid black;
+}
+
+.words{
+    float: left;
+    padding-left: 10px;
+}
+
+.means{
+    float: left;
+    padding-left: 15px;
+}
+
+.contents{
+    float: right;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contents li a{
+    display: inline-block;
+    font-size: 30px;
+    padding-top: 40px;
+    text-decoration: none;
+    color: rgb(39, 202, 39);
+    width: 455px;
+}
+
+.contents li img{
+    margin: 0 auto;
+    width: 7%;
+}
+
+.contents li a:hover{
+    font-weight: bold;
+    color: darkgreen;
+}
+
