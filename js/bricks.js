@@ -35,7 +35,7 @@ var brickPadding = 5;
 var brickOffsetTop = 30;
 var brickOffsetLeft = 30;
 
-var blockLife = 0;
+var blockLife = -1;
 
 //점수 생성
 var score = 0;
@@ -47,20 +47,19 @@ var level = 1;
 if (level = localStorage.getItem("level") == null) {
     level = 1;
 } else {
-    level = localStorage.getItem("level");
+    level = parseInt(localStorage.getItem("level"));
 }
-
+//---------------------------------레벨
+console.log("level : " + level)
 
 //벽돌생성
 
 var bricks = [];
-function createBricks() {
-    bricks = [];
-    for (var c = 0; c < brickColumnCount; c++) {
-        bricks[c] = [];
-        for (var r = 0; r < brickRowCount; r++) {
-            bricks[c][r] = { x: 0, y: 0, status: level };
-        }
+bricks = [];
+for (var c = 0; c < brickColumnCount; c++) {
+    bricks[c] = [];
+    for (var r = 0; r < brickRowCount; r++) {
+        bricks[c][r] = { x: 0, y: 0, status: level };
     }
 }
 
@@ -102,26 +101,25 @@ function collisionDetection() {
     for (var c = 0; c < brickColumnCount; c++) {
         for (var r = 0; r < brickRowCount; r++) {
             var b = bricks[c][r];
-            if( blockLife==0){
-                blockLife = b.status;
-                console.log(blockLife)
-            }
-            if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
-                dy = -dy;
-                console.log(blockLife)
-                blockLife--;
-                score++;
-                if (score == brickRowCount * brickColumnCount * level) {
-                    alert("YOU WIN, CONGRATULATIONS!");
-                    if (level == 3) document.location.reload();
-                    if (confirm("계속 하실?")) {
-                        level++;
-                        lives++;
-                        localStorage.setItem("level", level);
-                        document.location.reload();
-                        document.location.reload();
-                    } else {
-                        document.location.reload();
+            if (b.status >= 1) {
+                if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+                    dy = -dy;
+                    // blockLife--;
+                    console.log(b.status);
+                    b.status--;
+                    console.log(b.status);
+                    score++;
+                    if (score == brickRowCount * brickColumnCount * level) {
+                        alert("YOU WIN, CONGRATULATIONS!");
+                        if (level == 3) document.location.reload();
+                        if (confirm("계속 하실?")) {
+                            level++;
+                            lives++;
+                            localStorage.setItem("level", level);
+                            document.location.reload();
+                        } else {
+                            document.location.reload();
+                        }
                     }
                 }
             }
@@ -133,16 +131,17 @@ function collisionDetection() {
 function drawBricks() {
     for (var c = 0; c < brickColumnCount; c++) {
         for (var r = 0; r < brickRowCount; r++) {
-            if (bricks[c][r].status >= level) {
+            if (bricks[c][r].status >= 1) {
                 var brickX = (c * (brickWidth + brickPadding)) + brickOffsetLeft;
                 var brickY = (r * (brickHeight + brickPadding)) + brickOffsetTop;
                 bricks[c][r].x = brickX;
                 bricks[c][r].y = brickY;
                 ctx.beginPath();
                 ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                if (blockLife == 3) ctx.fillStyle = "#222222";
-                if (blockLife == 2) ctx.fillStyle = "#0095DD";
-                if (blockLife == 1) ctx.fillStyle = "#828282";
+                if (bricks[c][r].status != 1) console.log("dd")
+                if (bricks[c][r].status == 3) ctx.fillStyle = "#222222";
+                if (bricks[c][r].status == 2) ctx.fillStyle = "#0095DD";
+                if (bricks[c][r].status == 1) ctx.fillStyle = "#828282";
                 ctx.fill();
                 ctx.closePath();
             }
@@ -181,7 +180,6 @@ function drawLives() {
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    createBricks();
     drawBricks();
     drawBall();
     drawPaddle();
@@ -199,10 +197,6 @@ function draw() {
     else if (y + dy > canvas.height - ballRadius) {
         if (x >= paddleX && x <= paddleX + paddleWidth) {
 
-            // //속도 조절
-            // dy = -dy * (Math.random() + 0.8);
-            // if (dy <= -5) dy = -2;
-            // x += dx * Math.round((Math.random() * 2 + 1));
 
             if (x < paddleX + 20) {
                 if (dx > 0) {
@@ -240,7 +234,6 @@ function draw() {
                 dy = -2;
                 paddleX = (canvas.width - paddleWidth) / 2;
             }
-
         }
     }
     if (rightPressed && paddleX < canvas.width - paddleWidth) {
@@ -249,7 +242,6 @@ function draw() {
     else if (leftPressed && paddleX > 0) {
         paddleX -= 7;
     }
-
     x += dx;
     y += dy;
 
@@ -269,4 +261,3 @@ exitBtn.onclick = function exit() {
     canvas.width = canvas.width;
     localStorage.clear();
 }
-
