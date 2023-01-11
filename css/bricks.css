@@ -17,18 +17,3 @@
     text-align: center;
 }
 
-
-.container .titl{
-    border: 1px solid #777; 
-}
-
-.container .sub{
-    border: 1px solid #777; 
-    text-align: center;
-}
-.container .def{
-    border: 1px solid #777; 
-}
-.navbar {
-    background-image: url('img/bricks.jpg');
-}
