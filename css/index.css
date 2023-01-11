@@ -116,3 +116,21 @@ img {
 .container .def{
     border: 1px solid #777; 
 }
+
+/* gif넣기 */
+
+.gamedef{
+    display: flex;
+    flex-flow: row wrap;
+
+}
+
+.gamedef .gamedefInner{
+    margin: 20px;
+}
+
+.gamedef .gamedefInner img{
+    width: 500px;
+    height: 500px;
+
+}
